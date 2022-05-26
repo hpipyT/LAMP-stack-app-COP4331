@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>ContactsManager Prototype</title>
+        <script type="text/javascript" src="code.js"></script>
+        <link href="styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Secular One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1 id="title">Rodent Contacts</h1>
+
+        <div id="launchDiv">
+            <!-- Sign in form -->
+            <form class="form" id="frmLogin">
+                <span class="label">Username</span>
+                <input type="text" id="txtUsername" class="txtInput"/><br />
+
+                <span class="label">Password</span>
+                <input type="password" id="txtPassword" class="txtInput"/><br />
+
+                <button type="button" id="btnLogin" onclick="doLogin();"> Log in </button>
+
+                <span id="errLogin"></span><br />
+
+                <p id="lblNeedAccnt">Don't have an account?</p>
+                <a href="./" id="lnkSignUp" class="launchLink">Create one now</a>
+            </form>
+
+            <!-- Create account form -->
+            <form class="form hiddenForm" id="frmSignUp">
+                <span class="label">First Name</span>
+                <input type="text" id="txtFirstName" class="txtInput"/><br />
+
+                <span class="label">Last Name</span>
+                <input type="text" id="txtLastName" class="txtInput"/><br />
+
+                <span class="label">Create Username</span>
+                <input type="text" id="txtSignInName" class="txtInput"/><br />
+
+                <span class="label">Create Password</span>
+                <input type="text" id="txtSignInPassword" class="txtInput"/><br />
+
+                <span class="label">Confirm Password</span>
+                <input type="text" id="txtConfirmedPassword" class="txtInput"/><br />
+
+                <button type="button" id="btnSignUp" onclick="createAccount();"> Sign Up </button>
+
+                <span id="errSignUp"></span><br />
+
+                <p id="lblHaveAccnt">Already have an account?</p>
+                <a href="./" id="lnkLogin" class="launchLink">Log in</a>
+            </form>
+        </div>
+    </body>
+</html>
