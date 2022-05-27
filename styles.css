@@ -27,6 +27,19 @@
     display: none;
 }
 
+#searchBar
+{
+    width: 100%;
+    max-width: 800px;
+    margin-top: 19%;
+    margin-left: 28%;
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    background-color:darkslateblue;
+    opacity: 75%;
+}
+
 /*Labels*/
 .label
 {
@@ -90,6 +103,23 @@ input[type="text"],input[type="password"]
 	font-size: 20px;
 }
 
+#contactSearch
+{
+    font-size: 20px;
+    margin-top: 5%;
+    margin-left: 3%;
+    color:white;   
+    background: transparent;
+    border: 0;
+    outline: none;
+}
+
+#contactSearch::placeholder
+{
+    color:white;
+    opacity: 90%;
+}
+
 /*Buttons*/
 #btnLogin
 {
@@ -145,6 +175,22 @@ input[type="text"],input[type="password"]
     background-color: cornflowerblue;
     color: #FFFFFF;
     opacity: 50%;
+}
+
+.searchSubmit
+{
+    margin-left: 3%;
+    border: 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: ghostwhite;
+    opacity: 90%;
+}
+
+.searchSubmit img
+{
+    width: 25px;
 }
 
 /*Links*/
