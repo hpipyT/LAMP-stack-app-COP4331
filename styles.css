@@ -7,7 +7,7 @@
     color: darkslateblue; 
 }
 
-/*Sections*/
+/*-------------------- Sections --------------------*/
 #launchDiv
 {
     font-size: 30px;
@@ -19,12 +19,26 @@
 
 #frmLogin
 {
-    background-color: white;
+    /* background-color: white; */
 }
 
 .hiddenForm
 {
     display: none;
+}
+
+#menuDiv
+{
+    /* height: 90%; */
+    /* background-color: yellow; */
+}
+
+#contactsDiv
+{
+    display: grid;
+    grid-template-columns: 0.75fr 1fr;
+    grid-gap:20px;
+    /* background-color: red; */
 }
 
 #searchBar
@@ -40,8 +54,28 @@
     opacity: 75%;
 }
 
-/*Labels*/
-.label
+#frmSearchResults
+{
+    flex:1;
+    /* background-color: blue; */
+}
+
+#frmContactInfo
+{
+    margin-top: 4%;
+    margin-right: 35%;
+    width:1000px;
+    /* background: rgb(60, 60, 60); */
+    background: rgba(72, 61, 139, .1); 
+}
+
+#frmContactInfo a
+{
+    /* color: #fff; */
+}
+
+/*-------------------- Labels --------------------*/
+.lblLogin
 {
     display: inline-block;
     font-size: 0.6em;
@@ -49,6 +83,17 @@
     text-align: left;
     margin-left: 10%;
     margin-bottom: 2%;
+    font-family: 'Poppins', sans-serif;
+    color:black;
+}
+
+.lblContactInfoIdent
+{
+    display: inline-block;
+    margin-top: 1%;
+    margin-left: 1%;
+    font-size: 1.5em;
+    /* margin-bottom: 2%; */
     font-family: 'Poppins', sans-serif;
     color:black;
 }
@@ -89,7 +134,31 @@
     color:red;
 }
 
-/*Text entries*/
+#accountName
+{
+    display: inline-block;
+    font-size: 25px;
+    margin-top: 1%;
+    margin-left: 1%;
+    font-family: 'Poppins', sans-serif;
+    color: darkslateblue;
+}
+
+#resultList
+{
+    display: inline-block;
+    font-size: 4em;
+    margin-left: 1%;
+    font-family: 'Poppins', sans-serif;
+    color: darkslateblue;
+}
+
+#resultList:hover
+{
+    cursor:pointer;
+}
+
+/*-------------------- Text Entries --------------------*/
 input[type="text"],input[type="password"]
 {
     width: 80%;
@@ -101,6 +170,18 @@ input[type="text"],input[type="password"]
 .txtInput
 {
 	font-size: 20px;
+}
+
+.txtContactInfo
+{
+    display: inline-block;
+    margin-left: 1%;
+    font-size: 2.5em;
+    margin-bottom: 3%;
+    font-family: 'Poppins', sans-serif;
+    color:darkslateblue;
+    background:none;
+    border:0;
 }
 
 #contactSearch
@@ -120,7 +201,12 @@ input[type="text"],input[type="password"]
     opacity: 90%;
 }
 
-/*Buttons*/
+/*-------------------- Buttons --------------------*/
+.hiddenButton
+{
+    display: none;
+}
+
 #btnLogin
 {
     font-size: 25px;
@@ -161,9 +247,8 @@ input[type="text"],input[type="password"]
 #btnLogout
 {
     font-size: 18px;
-    width: 8%;
-    margin-top: 1%;
-    margin-left: 90%;
+    width: 7%;
+    margin-left: 68%;
     font-family: 'Poppins', sans-serif;
     border-radius: 15px;
     background-color:cornflowerblue;
@@ -177,7 +262,7 @@ input[type="text"],input[type="password"]
     opacity: 50%;
 }
 
-.searchSubmit
+#btnSearch
 {
     margin-left: 3%;
     border: 0;
@@ -188,12 +273,81 @@ input[type="text"],input[type="password"]
     opacity: 90%;
 }
 
-.searchSubmit img
+#btnSearch img
 {
     width: 25px;
+    cursor: pointer;
 }
 
-/*Links*/
+#btnEdit
+{
+    margin-top: 2%;
+    margin-left: 85%;
+    border: none;
+}
+
+#btnEdit img
+{
+    width: 25px;
+    cursor: pointer;
+    background:transparent;
+}
+
+#btnDelete
+{
+    margin-left: 3%;
+    border:none;
+}
+
+#btnDelete img
+{
+    height:28px;
+    width: 25px;
+    cursor: pointer;
+    background:transparent;
+}
+
+#btnUpdate
+{
+    font-size: 25px;
+    width: 15%;
+    margin-left: 60%;
+    margin-bottom: 1%;
+    font-family: 'Poppins', sans-serif;
+    background-color: lightgreen;
+    color: white;
+    border-radius: 10px;
+}
+
+#btnCancel
+{
+    font-size: 25px;
+    width: 15%;
+    margin-left: 4%;
+    font-family: 'Poppins', sans-serif;
+    background-color:lightcoral;
+    color: white;
+    border-radius: 10px;
+}
+
+#btnCreate
+{
+    font-size: 30px;
+    width: 35%;
+    margin-left: 33%;
+    font-family: 'Poppins', sans-serif;
+    background-color: darkslateblue;
+    color: white;
+    border-radius: 10px;
+}
+
+#btnCreate:hover
+{
+    opacity: 80%;
+    cursor: pointer;
+}
+
+/*-------------------- Links --------------------*/
 .launchLink
 {
     font-size: 0.45em;

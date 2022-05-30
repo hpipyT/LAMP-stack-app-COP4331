@@ -19,11 +19,11 @@
 
         <div id="launchDiv">
             <!-- Sign in form -->
-            <form class="form" id="frmLogin">
-                <span class="label">Username</span>
+            <form id="frmLogin">
+                <span class="lblLogin">Username</span>
                 <input type="text" id="txtUsername" class="txtInput"/><br />
 
-                <span class="label">Password</span>
+                <span class="lblLogin">Password</span>
                 <input type="password" id="txtPassword" class="txtInput"/><br />
 
                 <button type="button" id="btnLogin" onclick="doLogin();"> Log in </button>
@@ -35,23 +35,23 @@
             </form>
 
             <!-- Create account form -->
-            <form class="form hiddenForm" id="frmSignUp">
-                <span class="label">First Name</span>
+            <form class="hiddenForm" id="frmSignUp">
+                <span class="lblLogin">First Name</span>
                 <input type="text" id="txtFirstName" class="txtInput"/><br />
 
-                <span class="label">Last Name</span>
+                <span class="lblLogin">Last Name</span>
                 <input type="text" id="txtLastName" class="txtInput"/><br />
 
-                <span class="label">Create Username</span>
+                <span class="lblLogin">Create Username</span>
                 <input type="text" id="txtSignInName" class="txtInput"/><br />
 
-                <span class="label">Create Password</span>
+                <span class="lblLogin">Create Password</span>
                 <input type="text" id="txtSignInPassword" class="txtInput"/><br />
 
-                <span class="label">Confirm Password</span>
+                <span class="lblLogin">Confirm Password</span>
                 <input type="text" id="txtConfirmedPassword" class="txtInput"/><br />
 
-                <button type="button" id="btnSignUp" onclick="createAccount();"> Sign Up </button>
+                <button type="button" id="btnSignUp" onclick="doRegister();"> Sign Up </button>
 
                 <span id="errSignUp"></span><br />
 

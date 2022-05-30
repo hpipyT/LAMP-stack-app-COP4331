@@ -3,6 +3,14 @@
 // look into jquery and bootstrap
 // be done by the end of next week
 
+class Contact
+{
+    firstName;
+    lastName;
+    email;
+    phoneNum;
+}
+
 let userId = 0;
 let firstName = "";
 let lastName = "";
@@ -59,8 +67,8 @@ function doLogin()
     else if (password == "")
         setFormErrorMessage(err, "Enter in a password");
 
-	alert("Username: " + loginName + "\nPassword: " + password);
-    window.location.href = "menu.html";
+    saveCookie();
+	window.location.href = "menu.html";
 }
 
 function doLogout()
@@ -71,7 +79,7 @@ function doLogout()
     window.location.href = "index.html";
 }
 
-function createAccount()
+function doRegister()
 {
     let username = document.getElementById("txtSignInName").value;
     let password = document.getElementById("txtSignInPassword").value;
@@ -138,12 +146,108 @@ function readCookie()
     }
     else
     {
-        document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+        document.getElementById("accountName").innerHTML = "Logged in as " + lastName + ", " + firstName;
     }
 }
 
 function doSearch()
 {
     let query = document.getElementById("contactSearch").value;
-    alert(query);
+    const searchBar = document.querySelector("#searchBar");  
+    const frmContactInfo = document.querySelector("#frmContactInfo");  
+    let btnNewContact = document.querySelector("#btnCreate");
+
+    if(query != "")
+    {
+        // Make sure the contact info form is hidden
+        frmContactInfo.classList.add("hiddenForm");
+        
+        let contactsList = ""
+        contactsList += query + "<br />\r\n";
+
+        // Move search bar towards top of page
+        searchBar.style.marginTop = "3%";
+
+        document.getElementById("resultList").innerHTML = contactsList;
+    }   
+    
+    // Show add new contacts button
+    btnNewContact.classList.remove("hiddenButton");
+}
+
+function openContactInfo()
+{
+    const frmContactInfo = document.querySelector("#frmContactInfo");
+    let contact = new Contact();
+    contact.firstName = "Chris";
+    contact.lastName = "Beltran";
+    contact.email = "email@gmail.com";
+    contact.phoneNum = "555-555-5555";
+
+    // Show contact info form
+    frmContactInfo.classList.remove("hiddenForm");
+
+    document.getElementById("txtContactFirstName").setAttribute('value', contact.firstName);
+    document.getElementById("txtContactLastName").setAttribute('value', contact.lastName);
+    document.getElementById("txtEmail").setAttribute('value', contact.email);
+    document.getElementById("txtPhoneNum").setAttribute('value', contact.phoneNum);    
+}
+
+function doEdit()
+{
+    var txtContactInfo = document.getElementsByClassName("txtContactInfo");
+    let btnUpdate = document.querySelector("#btnUpdate");
+    let btnCancel = document.querySelector("#btnCancel");
+
+    // Make the contact info fields editable
+    for(let i = 0; i < txtContactInfo.length; i++)
+    {
+        txtContactInfo[i].style.background="white";
+        txtContactInfo[i].style.border="solid";
+        txtContactInfo[i].readOnly = false;
+    }
+    
+    // Show the update and cancel buttons
+    btnUpdate.classList.remove("hiddenButton");
+    btnCancel.classList.remove("hiddenButton");
+}
+
+function doDelete()
+{
+    const frmContactInfo = document.querySelector("#frmContactInfo");
+    alert("Delete contacts");
+
+    // Hide the contact info after a deletion
+    frmContactInfo.classList.add("hiddenForm");
+}
+
+function doUpdate()
+{
+    alert("Update info");
+
+    finishEdit();
+}
+
+function finishEdit()
+{
+    var txtContactInfo = document.getElementsByClassName("txtContactInfo");
+    let btnUpdate = document.querySelector("#btnUpdate");
+    let btnCancel = document.querySelector("#btnCancel");
+
+    // Make the contact info fields not editable
+    for(let i = 0; i < txtContactInfo.length; i++)
+    {
+        txtContactInfo[i].style.background="none";
+        txtContactInfo[i].style.border="0";
+        txtContactInfo[i].readOnly = true;
+    }   
+    
+    // Hide the update and cancel buttons
+    btnUpdate.classList.add("hiddenButton");
+    btnCancel.classList.add("hiddenButton");
+}
+
+function doCreate()
+{
+    alert("creating new contact");
 }
