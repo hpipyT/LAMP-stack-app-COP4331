@@ -25,27 +25,27 @@ else
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if( $row = $result->fetch_assoc()  )
-    {
+    // if( $row = $result->fetch_assoc()  )
+    // {
 
-        // for($x=0; $x <$row; $x++)
-        // {
-        //     if (str_contains($row['firstName'], $firstName))
-        //     {
-        //     //returnWithInfo($row['firstName'], $row['lastName'];)
-        //     returnWithInfo( $row['firstName'], $row['lastName'], $row["id"]);
-        //     //echo $row['firstName'];
-        //     }
-        // }
-        //returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
-        print "User Found in DataBase!";
+    //     // for($x=0; $x <$row; $x++)
+    //     // {
+    //     //     if (str_contains($row['firstName'], $firstName))
+    //     //     {
+    //     //     //returnWithInfo($row['firstName'], $row['lastName'];)
+    //     //     returnWithInfo( $row['firstName'], $row['lastName'], $row["id"]);
+    //     //     //echo $row['firstName'];
+    //     //     }
+    //     // }
+    //     //returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
+    //     //print "User Found in DataBase!";
 
-    }
-    else
-    {
-        returnWithError("No Records Found");
-    }
-
+    // }
+    // else
+    // {
+    //     returnWithError("No Records Found");
+    // }
+    print "User Found in DataBase!";
     $stmt->close();
     $conn->close();
 }

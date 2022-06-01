@@ -1,7 +1,8 @@
 <?php
-	$inData = getRequestInfo();
+	$exist = True;
 	
-	#$color = $inData["color"];
+	$inData = getRequestInfo();
+		#$color = $inData["color"];
 	$FirstName = $inData["FirstName"];
 	$LastName = $inData["LastName"];
 	$Login = $inData["Login"];
@@ -29,7 +30,8 @@
 		//returnWithInfo( $row['FirstName'], $row['LastName'], , $row['Password'], $row['Login'] );
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
+		print "Account Registered!";
+		//returnWithError("");
 	}
 
 	function getRequestInfo()
