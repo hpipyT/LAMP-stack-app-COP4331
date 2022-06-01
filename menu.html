@@ -20,6 +20,32 @@
         <button type="button" id="btnLogout" onclick="doLogout();"> Log out </button>
 
         <div id="menuDiv">
+
+            <!-- Create new contact -->
+            <div class="hidden" id="dlgNewContact">
+
+                <div class="dlgHeader">
+                    <span id="lblDlgHeader">New Contact</span>
+                </div>
+
+                <form id="dlgBody">
+                    <span class="lblNewContactInfoIdent">First Name</span>  <br />
+                    <input class="txtNewContactInfo" id="txtNewContactFirstName"><br />
+
+                    <span class="lblNewContactInfoIdent">Last Name</span><br />
+                    <input class="txtNewContactInfo" id="txtNewContactLastName"><br />
+
+                    <span class="lblNewContactInfoIdent">Email</span><br />
+                    <input class="txtNewContactInfo" id="txtNewEmail"><br />
+
+                    <span class="lblNewContactInfoIdent">Phone Number</span><br />
+                    <input class="txtNewContactInfo" id="txtNewPhoneNum" placeholder="xxx-xxx-xxxx"><br />
+                </form>
+                
+                <button id="btnCreate" onclick="doCreate();">Create</button>
+                <button id="btnCancelNewContact" onclick="finishCreate();">Cancel</button>
+            </div>
+            
             <form id="searchBar">
                 <input type="text" placeholder="search for contact" id="contactSearch">
                 <button type="button" id="btnSearch" onclick="doSearch();"><img src="images/searchIcon.png"></button>
@@ -31,7 +57,7 @@
                     <p id="resultList" onclick="openContactInfo();"></p>
                 </form>
     
-                <form class="hiddenForm" id="frmContactInfo">
+                <form class="hidden" id="frmContactInfo">
                     <button type="button" id="btnEdit" onclick="doEdit();"><img src="images/editIcon.png"></button>
                     <button type="button" id="btnDelete" onclick="doDelete();"><img src="images/deleteIcon.png"></button><br />
 
@@ -48,14 +74,14 @@
                     <input class="txtContactInfo" id="txtPhoneNum" readonly="readonly"><br />
 
                     <button type="button" class="hiddenButton" id="btnUpdate" onclick="doUpdate();">Update</button>
-                    <button type="button" class="hiddenButton" id="btnCancel" onclick="finishEdit();">Cancel</button>
+                    <button type="button" class="hiddenButton" id="btnCancelEdit" onclick="cancelUpdate();">Cancel</button>
                 </form>
 
                 <br />
             </div>
 
-            <!-- Create new contact -->
-            <button type="button" class="hiddenButton" id="btnCreate" onclick="doCreate();">ADD NEW CONTACT</button>
+            <!-- Add new contact -->
+            <button type="button" class="hiddenButton" id="btnAddContact" onclick="addContact();">ADD NEW CONTACT</button>            
         </div>        
     </body>
 </html>

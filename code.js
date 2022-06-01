@@ -24,8 +24,8 @@ function loadLogin()
     // When the Sign Up link is clicked, hide the Log In form
     document.querySelector("#lnkSignUp").addEventListener("click", e =>{
         e.preventDefault();
-        frmLogin.classList.add("hiddenForm");
-        frmSignUp.classList.remove("hiddenForm");
+        frmLogin.classList.add("hidden");
+        frmSignUp.classList.remove("hidden");
 
         document.getElementById("txtFirstName").value = "";
         document.getElementById("txtLastName").value = "";
@@ -38,8 +38,8 @@ function loadLogin()
     // When the Log In link is clicked, hide the Sign Up form
     document.querySelector("#lnkLogin").addEventListener("click", e =>{
         e.preventDefault();
-        frmLogin.classList.remove("hiddenForm");
-        frmSignUp.classList.add("hiddenForm");
+        frmLogin.classList.remove("hidden");
+        frmSignUp.classList.add("hidden");
 
         document.getElementById("txtUsername").value = "";
         document.getElementById("txtPassword").value = "";
@@ -63,12 +63,18 @@ function doLogin()
     let err = document.getElementById("errLogin");
 
     if (loginName == "")
+    {
         setFormErrorMessage(err, "Enter in a username");
+    }
     else if (password == "")
+    {
         setFormErrorMessage(err, "Enter in a password");
-
-    saveCookie();
-	window.location.href = "menu.html";
+    }
+    else
+    {
+        saveCookie();
+        window.location.href = "menu.html";
+    }    
 }
 
 function doLogout()
@@ -91,22 +97,34 @@ function doRegister()
     userId = 1;
 
     if (firstName == "")
+    {
         setFormErrorMessage(err, "Enter your first name");
+    }
     else if (lastName == "")
+    {
         setFormErrorMessage(err, "Enter your last name");
+    }
     else if (username == "")
+    {
         setFormErrorMessage(err, "Enter a username");
+    }
     else if (password == "")
+    {
         setFormErrorMessage(err, "Enter a password");
+    }
     else if (confirmedPassword == "")
+    {
         setFormErrorMessage(err, "Confirm your password");
+    }
     else if (confirmedPassword != password)
+    {
         setFormErrorMessage(err, "Confirmed password does not match given password");
+    }
     else
-        alert("Username: " + username + "\nPassword: " + password)
-    
-    saveCookie();
-    window.location.href = "menu.html";
+    {
+        saveCookie();
+        window.location.href = "menu.html";
+    }    
 }
 
 function saveCookie()
@@ -155,12 +173,12 @@ function doSearch()
     let query = document.getElementById("contactSearch").value;
     const searchBar = document.querySelector("#searchBar");  
     const frmContactInfo = document.querySelector("#frmContactInfo");  
-    let btnNewContact = document.querySelector("#btnCreate");
+    let btnNewContact = document.querySelector("#btnAddContact");
 
     if(query != "")
     {
         // Make sure the contact info form is hidden
-        frmContactInfo.classList.add("hiddenForm");
+        frmContactInfo.classList.add("hidden");
         
         let contactsList = ""
         contactsList += query + "<br />\r\n";
@@ -169,10 +187,10 @@ function doSearch()
         searchBar.style.marginTop = "3%";
 
         document.getElementById("resultList").innerHTML = contactsList;
-    }   
-    
-    // Show add new contacts button
-    btnNewContact.classList.remove("hiddenButton");
+
+        // Show add new contacts button
+        btnNewContact.classList.remove("hiddenButton");
+    }       
 }
 
 function openContactInfo()
@@ -185,7 +203,7 @@ function openContactInfo()
     contact.phoneNum = "555-555-5555";
 
     // Show contact info form
-    frmContactInfo.classList.remove("hiddenForm");
+    frmContactInfo.classList.remove("hidden");
 
     document.getElementById("txtContactFirstName").setAttribute('value', contact.firstName);
     document.getElementById("txtContactLastName").setAttribute('value', contact.lastName);
@@ -197,7 +215,7 @@ function doEdit()
 {
     var txtContactInfo = document.getElementsByClassName("txtContactInfo");
     let btnUpdate = document.querySelector("#btnUpdate");
-    let btnCancel = document.querySelector("#btnCancel");
+    let btnCancel = document.querySelector("#btnCancelEdit");
 
     // Make the contact info fields editable
     for(let i = 0; i < txtContactInfo.length; i++)
@@ -218,7 +236,7 @@ function doDelete()
     alert("Delete contacts");
 
     // Hide the contact info after a deletion
-    frmContactInfo.classList.add("hiddenForm");
+    frmContactInfo.classList.add("hidden");
 }
 
 function doUpdate()
@@ -228,11 +246,19 @@ function doUpdate()
     finishEdit();
 }
 
+function cancelUpdate()
+{
+    //TODO: don't accept changes before finishing edit
+
+    finishEdit();
+}
+
+
 function finishEdit()
 {
     var txtContactInfo = document.getElementsByClassName("txtContactInfo");
     let btnUpdate = document.querySelector("#btnUpdate");
-    let btnCancel = document.querySelector("#btnCancel");
+    let btnCancel = document.querySelector("#btnCancelEdit");
 
     // Make the contact info fields not editable
     for(let i = 0; i < txtContactInfo.length; i++)
@@ -247,7 +273,28 @@ function finishEdit()
     btnCancel.classList.add("hiddenButton");
 }
 
-function doCreate()
+function addContact()
 {
-    alert("creating new contact");
+    const dlgBox = document.querySelector("#dlgNewContact");
+    dlgBox.classList.remove("hidden");
+}
+
+function doCreate()
+{    
+    alert("created contact");
+
+    finishCreate();
+}
+
+function finishCreate()
+{
+    const dlgBox = document.querySelector("#dlgNewContact");
+
+    document.getElementById("txtNewContactFirstName").value = "";
+    document.getElementById("txtNewContactLastName").value = "";
+    document.getElementById("txtNewEmail").value = "";
+    document.getElementById("txtNewPhoneNum").value = "";
+    document.getElementById("txtNewPhoneNum").placeholder = "xxx-xxx-xxxx";
+
+    dlgBox.classList.add("hidden");
 }
