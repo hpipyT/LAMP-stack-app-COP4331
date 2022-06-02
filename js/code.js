@@ -1,7 +1,5 @@
-// TODO: 
-// Do a dialogue box to show the search results
-// look into jquery and bootstrap
-// be done by the end of next week
+const urlBase = 'http://rodenthub.com/LAMPAPI';
+const extension = 'php';
 
 class Contact
 {
@@ -58,30 +56,71 @@ function doLogin()
     firstName = "";
     lastName = "";
     
-    let loginName = document.getElementById("txtUsername").value;
+    let login = document.getElementById("txtUsername").value;
     let password = document.getElementById("txtPassword").value;
     let err = document.getElementById("errLogin");
 
-    if (loginName == "")
+    if(login == "")
     {
         setFormErrorMessage(err, "Enter in a username");
     }
-    else if (password == "")
+    else if(password == "")
     {
         setFormErrorMessage(err, "Enter in a password");
     }
     else
     {
+        // let tmp = {login:login, password:password};
+        // let jsonPayload = JSON.stringify(tmp);
+
+        // let url = urlBase + '/Login.' + extension;
+
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("POST", url, true);
+        // xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        // try
+        // {
+        //     xhr.onreadystatechange = function() 
+        //     {
+        //         if(this.readyState == 4 && this.status == 200) 
+        //         {
+        //             let jsonObject = JSON.parse(xhr.responseText);
+        //             alert('API endpoint connected with a payload of ' + jsonPayload);
+        //             userId = jsonObject.id;
+
+        //             if(userId < 1)
+        //             {		
+        //                 setFormErrorMessage(err, "User/Password combination incorrect");
+        //                 return;
+        //             }
+
+        //             firstName = jsonObject.firstName;
+        //             lastName = jsonObject.lastName;
+        
+        //             saveCookie();
+        //             window.location.href = "menu.html";
+        //         }
+        //     };
+
+        //     xhr.send(jsonPayload);
+        // }
+        // catch(err)
+        // {
+        //     setFormErrorMessage(err, err.message);
+        // }
+
+        // TODO: remove when endpoints work
         saveCookie();
         window.location.href = "menu.html";
-    }    
+    }
 }
 
 function doLogout()
 {
     userId = 0;
     firstName = "";
-    lastName = "";	
+    lastName = "";
+    document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
     window.location.href = "index.html";
 }
 
@@ -96,35 +135,70 @@ function doRegister()
     lastName = document.getElementById("txtLastName").value;
     userId = 1;
 
-    if (firstName == "")
+    if(firstName == "")
     {
         setFormErrorMessage(err, "Enter your first name");
     }
-    else if (lastName == "")
+    else if(lastName == "")
     {
         setFormErrorMessage(err, "Enter your last name");
     }
-    else if (username == "")
+    else if(username == "")
     {
         setFormErrorMessage(err, "Enter a username");
     }
-    else if (password == "")
+    else if(password == "")
     {
         setFormErrorMessage(err, "Enter a password");
     }
-    else if (confirmedPassword == "")
+    else if(confirmedPassword == "")
     {
         setFormErrorMessage(err, "Confirm your password");
     }
-    else if (confirmedPassword != password)
+    else if(confirmedPassword != password)
     {
         setFormErrorMessage(err, "Confirmed password does not match given password");
     }
     else
     {
+        // let tmp = {FirstName:firstName, LastName:lastName, Login:username, Password:confirmedPassword};
+        // let jsonPayload = JSON.stringify(tmp);
+
+        // let url = urlBase + '/Register.' + extension;
+
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("POST", url, true);
+        // xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        // try
+        // {
+        //     xhr.onreadystatechange = function() 
+        //     {
+        //         if(this.readyState == 4 && this.status == 200) 
+        //         {
+        //             let jsonObject = JSON.parse(xhr.responseText);
+        //             alert('API endpoint connected with a payload of ' + jsonPayload);
+
+        //             //TODO: what's the logic here?
+
+        //             firstName = jsonObject.firstName;
+        //             lastName = jsonObject.lastName;
+        
+        //             saveCookie();
+        //             window.location.href = "menu.html";
+        //         }
+        //     };
+
+        //     xhr.send(jsonPayload);
+        // }
+        // catch(err)
+        // {
+        //     setFormErrorMessage(err, err.message);
+        // }
+
+        // TODO: remove when endpoints work
         saveCookie();
         window.location.href = "menu.html";
-    }    
+    }
 }
 
 function saveCookie()
@@ -170,9 +244,9 @@ function readCookie()
 
 function doSearch()
 {
-    let query = document.getElementById("contactSearch").value;
     const searchBar = document.querySelector("#searchBar");  
     const frmContactInfo = document.querySelector("#frmContactInfo");  
+    let query = document.getElementById("contactSearch").value;
     let btnNewContact = document.querySelector("#btnAddContact");
 
     if(query != "")
@@ -181,10 +255,54 @@ function doSearch()
         frmContactInfo.classList.add("hidden");
         
         let contactsList = ""
-        contactsList += query + "<br />\r\n";
 
+        //TODO: what is the API expecting
+        // let jsonPayload = JSON.stringify(tmp);
+
+        //TODO: is this right API?
+        // let url = urlBase + '/Search.' + extension;
+        
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("POST", url, true);
+        // xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        // try
+        // {
+        //     xhr.onreadystatechange = function() 
+        //     {
+        //         if (this.readyState == 4 && this.status == 200) 
+        //         {
+        //             // Move search bar towards top of page
+        //             searchBar.style.marginTop = "3%";
+
+        //             let jsonObject = JSON.parse( xhr.responseText );
+
+        //             for( let i=0; i<jsonObject.results.length; i++ )
+        //             {
+        //                 contactsList += jsonObject.results[i];
+        //                 if( i < jsonObject.results.length - 1 )
+        //                 {
+        //                     contactsList += "<br />\r\n";
+        //                 }
+        //             }
+
+        //             document.getElementById("resultList").innerHTML = contactsList;
+
+        //             // Show add new contacts button
+        //             btnNewContact.classList.remove("hiddenButton");
+        //         }
+        //     };
+        //     xhr.send(jsonPayload);
+        // }
+        // catch(err)
+        // {
+        //     //TODO: currently don't have an indicator
+        // }
+
+        // TODO: remove remaining code when endpoints work
         // Move search bar towards top of page
         searchBar.style.marginTop = "3%";
+
+        contactsList += query + "<br />\r\n";
 
         document.getElementById("resultList").innerHTML = contactsList;
 
@@ -241,8 +359,37 @@ function doDelete()
 
 function doUpdate()
 {
-    alert("Update info");
+    // let firstName = document.getElementById("txtContactFirstName").value;
+    // let lastName = document.getElementById("txtContactLastName").value;
+    // let email = document.getElementById("txtEmail").value;
+    // let phoneNum = document.getElementById("txtPhoneNum").value; 
+    // let name = firstName + " " + lastName;
+    
+    // let tmp = {Name:name, Phone:phoneNum, Email:email};
+	// let jsonPayload = JSON.stringify(tmp);
 
+    // let url = urlBase + '/Edit.' + extension;
+	
+	// let xhr = new XMLHttpRequest();
+	// xhr.open("POST", url, true);
+	// xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	// try
+	// {
+	// 	xhr.onreadystatechange = function() 
+	// 	{
+	// 		if (this.readyState == 4 && this.status == 200) 
+	// 		{
+	// 			finishEdit();
+	// 		}
+	// 	};
+	// 	xhr.send(jsonPayload);
+	// }
+	// catch(err)
+	// {
+	// 	//TODO: currently don't have a label for errors about this
+	// }
+
+    // TODO: remove when endpoints work
     finishEdit();
 }
 
@@ -252,7 +399,6 @@ function cancelUpdate()
 
     finishEdit();
 }
-
 
 function finishEdit()
 {
@@ -281,8 +427,37 @@ function addContact()
 
 function doCreate()
 {    
-    alert("created contact");
+    // let firstName = document.getElementById("txtNewContactFirstName").value;
+    // let lastName = document.getElementById("txtNewContactLastName").value;
+    // let email = document.getElementById("txtNewEmail").value;
+    // let phoneNum = document.getElementById("txtNewPhoneNum").value; 
+    // let name = firstName + " " + lastName;
 
+    // let tmp = {userId:userId, Name:name, Phone:phoneNum, Email:email};
+    // let jsonPayload = JSON.stringify(tmp);
+
+    // let url = urlBase + '/AddContacts.' + extension;
+
+    // let xhr = new XMLHttpRequest();
+    // xhr.open("POST", url, true);
+    // xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    // try
+    // {
+    //     xhr.onreadystatechange = function() 
+    //     {
+    //         if (this.readyState == 4 && this.status == 200) 
+    //         {
+    //             finishCreate();
+    //         }
+    //     };
+    //     xhr.send(jsonPayload);
+    // }
+    // catch(err)
+    // {
+    //     //TODO: currently don't have a label for errors about this
+    // }
+
+    // TODO: remove when endpoints work
     finishCreate();
 }
 
