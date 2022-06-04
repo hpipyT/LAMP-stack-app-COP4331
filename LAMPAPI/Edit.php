@@ -12,7 +12,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("UPDATE Contacts ID SET Name = ?, Phone =?, Email = ?");
+		$stmt = $conn->prepare("UPDATE Contacts ID SET Name = ?, Phone =?, Email = ? where ID=?");
         //$stmt = $conn->prepare("UPDATE into Contacts (UserId,Name,Phone, Email) VALUES(?,?,?,?)");
 		//$stmt->bind_param("ssss", $userId, $Name, $Phone, $Email);
         $stmt->bind_param("sss",$Name, $Phone, $Email);

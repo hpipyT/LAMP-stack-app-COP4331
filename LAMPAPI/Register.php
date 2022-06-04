@@ -2,7 +2,7 @@
 	$exist = True;
 	
 	$inData = getRequestInfo();
-		#$color = $inData["color"];
+	#$color = $inData["color"];
 	$FirstName = $inData["FirstName"];
 	$LastName = $inData["LastName"];
 	$Login = $inData["Login"];
