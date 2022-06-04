@@ -248,6 +248,8 @@ function doSearch()
     const frmContactInfo = document.querySelector("#frmContactInfo");  
     let query = document.getElementById("contactSearch").value;
     let btnNewContact = document.querySelector("#btnAddContact");
+    //test
+    //let err = document.getElementById("errSearch");
 
     if(query != "")
     {
@@ -293,6 +295,7 @@ function doSearch()
         //     };
         //     xhr.send(jsonPayload);
         // }
+        //
         // catch(err)
         // {
         //     //TODO: currently don't have an indicator
@@ -367,6 +370,9 @@ function doUpdate()
     
     // let tmp = {Name:name, Phone:phoneNum, Email:email};
 	// let jsonPayload = JSON.stringify(tmp);
+    
+    //test
+    //let err = document.getElementById("errUpdate");
 
     // let url = urlBase + '/Edit.' + extension;
 	
@@ -432,6 +438,7 @@ function doCreate()
     // let email = document.getElementById("txtNewEmail").value;
     // let phoneNum = document.getElementById("txtNewPhoneNum").value; 
     // let name = firstName + " " + lastName;
+    //let err = document.getElementById("errCreate");
 
     // let tmp = {userId:userId, Name:name, Phone:phoneNum, Email:email};
     // let jsonPayload = JSON.stringify(tmp);
