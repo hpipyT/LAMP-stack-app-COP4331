@@ -16,6 +16,7 @@
 
     <body>
         <!-- Menu heading -->
+        <!-- test-->
         <span id="accountName"></span>
         <button type="button" id="btnLogout" onclick="doLogout();"> Log out </button>
 
@@ -38,17 +39,22 @@
                     <span class="lblNewContactInfoIdent">Email</span><br />
                     <input class="txtNewContactInfo" id="txtNewEmail"><br />
 
+                    
+
                     <span class="lblNewContactInfoIdent">Phone Number</span><br />
                     <input class="txtNewContactInfo" id="txtNewPhoneNum" placeholder="xxx-xxx-xxxx"><br />
                 </form>
                 
                 <button id="btnCreate" onclick="doCreate();">Create</button>
                 <button id="btnCancelNewContact" onclick="finishCreate();">Cancel</button>
+                <!--<span id="errCreate"></span><br />-->
             </div>
             
             <form id="searchBar">
                 <input type="text" placeholder="search for contact" id="contactSearch">
                 <button type="button" id="btnSearch" onclick="doSearch();"><img src="images/searchIcon.png"></button>
+
+                <!-- <span id="errSearch"></span><br /> -->
             </form>
 
             <!-- Container for search results and contact info -->
@@ -73,15 +79,19 @@
                     <span class="lblContactInfoIdent">Phone Number</span><br />
                     <input class="txtContactInfo" id="txtPhoneNum" readonly="readonly"><br />
 
+                    
+
                     <button type="button" class="hiddenButton" id="btnUpdate" onclick="doUpdate();">Update</button>
                     <button type="button" class="hiddenButton" id="btnCancelEdit" onclick="cancelUpdate();">Cancel</button>
+                    <!--<span id="errUpdate"></span><br />-->
                 </form>
 
                 <br />
             </div>
 
             <!-- Add new contact -->
-            <button type="button" class="hiddenButton" id="btnAddContact" onclick="addContact();">ADD NEW CONTACT</button>            
+            <button type="button" class="hiddenButton" id="btnAddContact" onclick="addContact();">ADD NEW CONTACT</button>
+                        
         </div>        
     </body>
 </html>

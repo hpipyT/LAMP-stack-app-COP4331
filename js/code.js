@@ -249,7 +249,7 @@ function doSearch()
     let query = document.getElementById("contactSearch").value;
     let btnNewContact = document.querySelector("#btnAddContact");
     //test
-    //let err = document.getElementById("errSearch");
+    //let errSearch = document.getElementById("errSearch");
 
     if(query != "")
     {
@@ -298,7 +298,8 @@ function doSearch()
         //
         // catch(err)
         // {
-        //     //TODO: currently don't have an indicator
+        //setFormErrorMessage(errSearch, err.message)
+        //
         // }
 
         // TODO: remove remaining code when endpoints work
@@ -372,7 +373,7 @@ function doUpdate()
 	// let jsonPayload = JSON.stringify(tmp);
     
     //test
-    //let err = document.getElementById("errUpdate");
+    //let errUpdate = document.getElementById("errUpdate"); //
 
     // let url = urlBase + '/Edit.' + extension;
 	
@@ -392,7 +393,7 @@ function doUpdate()
 	// }
 	// catch(err)
 	// {
-	// 	//TODO: currently don't have a label for errors about this
+	// 	    setFormErrorMessage(errUpdate, err.message); //
 	// }
 
     // TODO: remove when endpoints work
@@ -438,7 +439,7 @@ function doCreate()
     // let email = document.getElementById("txtNewEmail").value;
     // let phoneNum = document.getElementById("txtNewPhoneNum").value; 
     // let name = firstName + " " + lastName;
-    //let err = document.getElementById("errCreate");
+    //let errCreate = document.getElementById("errCreate");
 
     // let tmp = {userId:userId, Name:name, Phone:phoneNum, Email:email};
     // let jsonPayload = JSON.stringify(tmp);
@@ -461,7 +462,7 @@ function doCreate()
     // }
     // catch(err)
     // {
-    //     //TODO: currently don't have a label for errors about this
+    //     setFormErrorMessage(errCreate, err.message);
     // }
 
     // TODO: remove when endpoints work
