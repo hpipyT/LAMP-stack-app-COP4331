@@ -12,7 +12,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("DELETE Name from Contacts where Name like ? and UserID=?");
+		$stmt = $conn->prepare("DELETE Name from Contacts where Name like ? and ID=?");
 		$delete = "%" . $inData["search"] . "%";
 		$stmt->bind_param("ss", $delete, $inData["userId"]);
 		$stmt->execute();
