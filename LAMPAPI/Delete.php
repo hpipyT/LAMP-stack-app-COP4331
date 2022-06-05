@@ -1,10 +1,8 @@
 <?php
 
 	$inData = getRequestInfo();
-	
-	//$searchResults = "";
-	//$ID = "";
-	//$searchCount = 0;
+	$delete = $inData["delete"];
+	$ID = $inData["ID"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
@@ -15,11 +13,13 @@
 	{
 		$stmt = $conn->prepare("DELETE from Contacts where Name=? and ID=?");
 		//$delete = "%" . $inData["delete"] . "%";
-		$stmt->bind_param("ss", $inData["delete"], $inData["ID"]);
+		//$stmt->bind_param("ss", $inData["delete"], $inData["ID"]);
+		$stmt->bind_param("ss", $delete, $ID);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
 		
+		print "Deleted Contact => ID: $ID, and Name: $delete";
 		// while($row = $result->fetch_assoc())
 		// {
 		// 	//print($row["ID"];)
