@@ -76,7 +76,7 @@
 	
 	function returnWithInfo( $searchResults, $emails, $phones, $ID)
 	{
-		$retValue = '{"IDs":[' . $ID . ']},{"Name":[' . $searchResults . ']},{"Email":[' . $emails . ']},{"Phone":[' . $phones . ']}, {"error":""}';
+		$retValue = '{"IDs":[' . $ID . '],"Name":[' . $searchResults . '],"Email":[' . $emails . '],"Phone":[' . $phones . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
