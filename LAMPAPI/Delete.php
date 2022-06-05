@@ -2,8 +2,9 @@
 
 	$inData = getRequestInfo();
 	
-	$searchResults = "";
-	$searchCount = 0;
+	//$searchResults = "";
+	//$ID = "";
+	//$searchCount = 0;
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
@@ -12,32 +13,37 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("DELETE Name from Contacts where Name like ? and ID=?");
-		$delete = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $delete, $inData["userId"]);
+		$stmt = $conn->prepare("DELETE from Contacts where Name=? and ID=?");
+		//$delete = "%" . $inData["delete"] . "%";
+		$stmt->bind_param("ss", $inData["delete"], $inData["ID"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
 		
-		while($row = $result->fetch_assoc())
-		{
-			if( $searchCount > 0 )
-			{
-				$searchResults .= ",";
-			}
-			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
-		}
-
-
+		// while($row = $result->fetch_assoc())
+		// {
+		// 	//print($row["ID"];)
+		// 	if( $searchCount > 0 )
+		// 	{
+		// 		$searchResults .= ",";
+		// 		$ID .=",";
+		// 	}
+		// 	$searchCount++;
+		// 	//$ID++;
+		// 	$ID .= '"' . $row["ID"] . '"';
+		// 	$searchResults .= '"' . $row["Name"] . '"';
+			
+		// }
 		
-		if( $searchCount == 0 )
-		{
-			returnWithError( "No Records Found" );
-		}
+		// if( $searchCount == 0 )
+		// {
+		// 	returnWithError( "No Records Found" );
+		// }
 		// else
 		// {
-		// 	returnWithInfo( $searchResults );
+		// 	//returnWithInfo( $searchResults );
+		// 	returnWithInfo( $searchResults, $ID );
+		// 	//returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
 		// }
 		
 		$stmt->close();
@@ -61,9 +67,10 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $searchResults )
+	function returnWithInfo( $searchResults, $ID)
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		$retValue = '{"results":[' . $searchResults . '],"ID":['. $ID . '], "error":""}';
+		//$retValue = '{"results":[' . $searchResults . '], "error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
