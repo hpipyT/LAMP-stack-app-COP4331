@@ -21,7 +21,7 @@
 	{
 		$CheckQuery = mysqli_query($conn,$CheckUser);
 		if(mysqli_num_rows($CheckQuery)>0){
-			echo "Username taken";
+			returnWithError( "Username taken");
 		}else{
 
 		$stmt = $conn->prepare("INSERT into Users (Login, FirstName, LastName, Password) VALUES(?,?,?,?)");
@@ -36,7 +36,6 @@
 		{
 //			echo $Login;
 //			echo $row['ID'];
-			print "Account Registered!\n";
 			returnWithInfo( $row['ID']);
 		}
 		else
