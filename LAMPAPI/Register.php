@@ -2,7 +2,7 @@
 	$exist = True;
 
 	$inData = getRequestInfo();
-	#$color = $inData["color"];
+//	#$color = $inData["color"];
 	$FirstName = $inData["FirstName"];
 	$LastName = $inData["LastName"];
 	$Login = $inData["Login"];
@@ -10,8 +10,8 @@
 	$CheckUser = "SELECT * from Users WHERE Login = '$Login'";
 
 
-	#$conn = new mysqli("localhost", "userId", "password", "database");
-	#$conn = new mysqli("localhost", "NewUser", "NewPass", "TestFirst", "TestLast", "COP4331");
+//	#$conn = new mysqli("localhost", "userId", "password", "database");
+//	#$conn = new mysqli("localhost", "NewUser", "NewPass", "TestFirst", "TestLast", "COP4331");
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error)
 	{
@@ -29,16 +29,30 @@
 		//$stmt->bind_param("ssss", $inData["userId"], $inData["firstName"], $inData["lastName"], $inData["password"]);
 		$stmt->bind_param("ssss", $Login, $FirstName, $LastName, $Password);
 		$stmt->execute();
-
+		$stmt2 = $conn->prepare("SELECT ID FROM Users WHERE Login='$Login'");
+		$stmt2->execute();
+		$result = $stmt2->get_result();
+		if( $row = $result->fetch_assoc())
+		{
+//			echo $Login;
+//			echo $row['ID'];
+			print "Account Registered!\n";
+			returnWithInfo( $row['ID']);
+		}
+		else
+		{
+			returnWithError("Unexpected error");
+		}
 		// if( $row = $result->fetch_assoc()  )
 		// {
 		// 	echo "Username already taken<br>";
 		// }
 		//returnWithInfo( $row['FirstName'], $row['LastName'], , $row['Password'], $row['Login'] );
 		$stmt->close();
+		$stmt2->close();
 		$conn->close();
-		print "Account Registered!";
-		//returnWithError("");
+//		print "Account Registered!";
+//		returnWithError("");
    }
 	}
 
@@ -51,6 +65,12 @@
 	{
 		header('Content-type: application/json');
 		echo $obj;
+	}
+
+	function returnWithInfo($result)
+	{
+		$retValue = '{"ID":' . $result . '}';
+		sendResultInfoAsJson($retValue);
 	}
 
 	function returnWithError( $err )
