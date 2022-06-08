@@ -16,82 +16,76 @@
 
     <body>
         <!-- Menu heading -->
-        <!-- test-->
         <span id="accountName"></span>
         <button type="button" id="btnLogout" onclick="doLogout();"> Log out </button>
 
-        <div id="menuDiv">
+        <!-- Create new contact -->
+        <div class="hidden" id="dlgNewContact">
 
-            <!-- Create new contact -->
-            <div class="hidden" id="dlgNewContact">
-
-                <div class="dlgHeader">
-                    <span id="lblDlgHeader">New Contact</span>
-                </div>
-
-                <form id="dlgBody">
-                    <span class="lblNewContactInfoIdent">First Name</span>  <br />
-                    <input class="txtNewContactInfo" id="txtNewContactFirstName"><br />
-
-                    <span class="lblNewContactInfoIdent">Last Name</span><br />
-                    <input class="txtNewContactInfo" id="txtNewContactLastName"><br />
-
-                    <span class="lblNewContactInfoIdent">Email</span><br />
-                    <input class="txtNewContactInfo" id="txtNewEmail"><br />
-
-                    
-
-                    <span class="lblNewContactInfoIdent">Phone Number</span><br />
-                    <input class="txtNewContactInfo" id="txtNewPhoneNum" placeholder="xxx-xxx-xxxx"><br />
-                </form>
-                
-                <button id="btnCreate" onclick="doCreate();">Create</button>
-                <button id="btnCancelNewContact" onclick="finishCreate();">Cancel</button>
-                <!--<span id="errCreate"></span><br />-->
+            <div class="dlgHeader">
+                <span class="lblDlgHeader">New Contact</span>
             </div>
+
+            <form id="dlgNewContactBody">
+                <span class="lblNewContactInfoIdent">First Name</span>  <br />
+                <input class="txtNewContactInfo" id="txtNewContactFirstName"><br />
+
+                <span class="lblNewContactInfoIdent">Last Name</span><br />
+                <input class="txtNewContactInfo" id="txtNewContactLastName"><br />
+
+                <span class="lblNewContactInfoIdent">Email</span><br />
+                <input class="txtNewContactInfo" id="txtNewEmail"><br />
+
+                <span class="lblNewContactInfoIdent">Phone Number</span><br />
+                <input class="txtNewContactInfo" id="txtNewPhoneNum" placeholder="xxx-xxx-xxxx"><br />
+            </form>
             
+            <button id="btnCreate" onclick="doCreate();">Create</button>
+            <button id="btnCancelNewContact" onclick="closeNewContact();">Cancel</button>
+            <span class="lblError" id="errCreate"></span><br />
+        </div>
+
+        <!-- Dialog box for reading, editing, and deleting contacts -->
+        <div class="hidden" id="dlgContactInfo">
+
+            <div class="dlgHeader">
+                <span class="lblDlgHeader">Contact Info</span>
+            </div>
+
+            <form id="dlgInfoBody">
+                <span class="lblContactInfoIdent">First Name</span>  <br />
+                <input class="txtContactInfo" id="txtContactFirstName"><br />
+
+                <span class="lblContactInfoIdent">Last Name</span><br />
+                <input class="txtContactInfo" id="txtContactLastName">
+
+                <button type="button" id="btnUpdate" onclick="doUpdate();">Update</button><br />
+
+                <span class="lblContactInfoIdent">Email</span><br />
+                <input class="txtContactInfo" id="txtEmail">
+
+                <button type="button" id="btnDelete" onclick="doDelete();">Delete</button><br />
+
+                <span class="lblContactInfoIdent">Phone Number</span><br />
+                <input class="txtContactInfo" id="txtPhoneNum"><br />
+
+                <button type="button" id="btnCloseInfo" onclick="closeInfo();">Cancel</button><br />
+            </form>
+            <span class="lblError" id="errInfo"></span><br />
+        </div>
+
+        <div id="menuDiv">
             <form id="searchBar">
                 <input type="text" placeholder="search for contact" id="contactSearch">
                 <button type="button" id="btnSearch" onclick="doSearch();"><img src="images/searchIcon.png"></button>
-
-                <!-- <span id="errSearch"></span><br /> -->
             </form>
 
-            <!-- Container for search results and contact info -->
-            <div id="contactsDiv">
-                <form id="frmSearchResults">
-                    <p id="resultList" onclick="openContactInfo();"></p>
-                </form>
-    
-                <form class="hidden" id="frmContactInfo">
-                    <button type="button" id="btnEdit" onclick="doEdit();"><img src="images/editIcon.PNG"></button>
-                    <button type="button" id="btnDelete" onclick="doDelete();"><img src="images/deleteIcon.PNG"></button><br />
-
-                    <span class="lblContactInfoIdent">First Name</span>  <br />
-                    <input class="txtContactInfo" id="txtContactFirstName" readonly="readonly"><br />
-
-                    <span class="lblContactInfoIdent">Last Name</span><br />
-                    <input class="txtContactInfo" id="txtContactLastName" readonly="readonly"><br />
-
-                    <span class="lblContactInfoIdent">Email</span><br />
-                    <input class="txtContactInfo" id="txtEmail" readonly="readonly"><br />
-
-                    <span class="lblContactInfoIdent">Phone Number</span><br />
-                    <input class="txtContactInfo" id="txtPhoneNum" readonly="readonly"><br />
-
-                    
-
-                    <button type="button" class="hiddenButton" id="btnUpdate" onclick="doUpdate();">Update</button>
-                    <button type="button" class="hiddenButton" id="btnCancelEdit" onclick="cancelUpdate();">Cancel</button>
-                    <!--<span id="errUpdate"></span><br />-->
-                </form>
-
-                <br />
-            </div>
+            <!-- Container for search results -->
+            <form id="frmSearchResults"></form>
 
             <!-- Add new contact -->
-            <button type="button" class="hiddenButton" id="btnAddContact" onclick="addContact();">ADD NEW CONTACT</button>
-                        
+            <button type="button" id="btnAddContact" onclick="addContact();">ADD NEW CONTACT</button>
+            <br /><span class="lblError" id="errSearch"></span>
         </div>        
     </body>
 </html>

@@ -26,13 +26,6 @@
     padding: 0.5vw;
 }
 
-#contactsDiv
-{
-    display: grid;
-    grid-template-columns: .75fr 1fr;
-    grid-gap:2vw;
-}
-
 #searchBar
 {
     display: flex;
@@ -48,26 +41,25 @@
 #frmSearchResults
 {
     flex:1;
+    text-align: center;
 }
 
-#frmContactInfo
-{
-    width:50vw;
-    margin-top: 3vw;
-    margin-right: 3vw;
-    background: rgba(72, 61, 139, .1); 
-}
-
-#dlgNewContact
+#dlgNewContact, #dlgContactInfo
 {
     position: fixed;
     width:60vw;
-    max-height: 45vw;
+    max-height: 55vw;
+    margin-top: 2vw;
     margin-left: 20vw;
     z-index: 9999;
     border: solid;
     border-radius: 8px;
     background-color: white;
+}
+
+#dlgContactInfo
+{
+    background: rgb(236, 236, 255);
 }
 
 /*-------------------- Labels --------------------*/
@@ -84,9 +76,9 @@
 .lblContactInfoIdent
 {
     display: inline-block;
-    font-size: 1.3vw;
     margin-top: 1vw;
-    margin-left: 1vw;
+    margin-left: 10vw;
+    font-size: 1.3vw;
     font-family: 'Poppins', sans-serif;
     color:black;
 }
@@ -94,18 +86,52 @@
 .lblNewContactInfoIdent
 {
     display: inline-block;
-    font-size: 1vw;
     margin-top: 1vw;
     margin-left: 15vw;
+    font-size: 1vw;
     font-family: 'Poppins', sans-serif;
     color:black;
+}
+
+.contactResult
+{
+    display: inline-block;
+    font-size: 3vw;
+    font-family: 'Poppins', sans-serif;
+    color: darkslateblue;
+}
+
+.contactResult:hover
+{
+    cursor:pointer;
+    text-decoration: underline;
+}
+
+.lblDlgHeader
+{
+    color: white;
+    font-size: 1.6vw;
+    margin-left: 1vw;
+    font-family: 'Poppins', sans-serif;    
+}
+
+.lblError
+{
+    display: inline-block;
+    width: 25vw;
+    font-size: 1vw;
+    text-align: center;
+    margin-top: 4vw;
+    margin-left: 8vw;
+    font-family: 'Poppins', sans-serif;
+    color:red;
 }
 
 #lblNeedAccnt
 {
     display: inline-block;
     font-size: 1vw;
-    margin-top: 3vw;
+    margin-top: 1vw;
     margin-left: 10vw;
     margin-bottom: 2vw;
     font-family: 'Poppins', sans-serif;
@@ -116,23 +142,28 @@
 {
     display: inline-block;
     font-size: 1vw;
-    margin-top: 3vw;
+    margin-top: 1vw;
     margin-left: 12vw;
     margin-bottom: 2vw;
     font-family: 'Poppins', sans-serif;
     color:black;
 }
 
-#errLogin, #errSignUp
+#errCreate, #errSearch, #errInfo
 {
-    display: inline-block;
-    width: 25vw;
-    text-align: center;
-    font-size: 1vw;
-    margin-top: 5vw;
-    margin-left: 8vw;
-    font-family: 'Poppins', sans-serif;
-    color:red;
+    font-size: 2vw;
+    margin-top: 2vw;
+    margin-left: 16vw;
+}
+
+#errSearch
+{
+    margin-left: 35vw;
+}
+
+#errInfo
+{
+    margin-left: 14vw;
 }
 
 #accountName
@@ -145,33 +176,11 @@
     color: darkslateblue;
 }
 
-#resultList
-{
-    display: inline-block;
-    font-size: 3vw;
-    margin-left: 1vw;
-    font-family: 'Poppins', sans-serif;
-    color: darkslateblue;
-}
-
-#resultList:hover
-{
-    cursor:pointer;
-}
-
-#lblDlgHeader
-{
-    color: white;
-    font-size: 1.6vw;
-    margin-left: 1vw;
-    font-family: 'Poppins', sans-serif;    
-}
-
 /*-------------------- Text Entries --------------------*/
 input[type="text"],input[type="password"]
 {
     width: 80%;
-    margin-left: 10%;
+    margin-left: 4vw;
     margin-bottom: 5%;
     font-family: 'Poppins', sans-serif;
 }
@@ -184,20 +193,19 @@ input[type="text"],input[type="password"]
 .txtContactInfo
 {
     display: inline-block;
+    margin-left: 10vw;
     font-size: 2.5vw;
-    margin-left: 1vw;
     margin-bottom: 1vw;
     font-family: 'Poppins', sans-serif;
     color:darkslateblue;
-    background:none;
-    border:0;
+    background:white;
 }
 
 .txtNewContactInfo
 {
     display: inline-block;
-    font-size: 2.3vw;
     margin-left: 15vw;
+    font-size: 2.3vw;
     margin-bottom: 2vw;
     font-family: 'Poppins', sans-serif;
     color:darkslateblue;
@@ -222,10 +230,6 @@ input[type="text"],input[type="password"]
 }
 
 /*-------------------- Buttons --------------------*/
-.hiddenButton
-{
-    display: none;
-}
 
 #btnLogin
 {
@@ -240,6 +244,8 @@ input[type="text"],input[type="password"]
 
 #btnLogin:hover
 {
+    background-color: orange;
+    color: #FFFFFF;
     opacity: 50%;
 }
 
@@ -257,6 +263,8 @@ input[type="text"],input[type="password"]
 
 #btnSignUp:hover
 {
+    background-color: cornflowerblue;
+    color: #FFFFFF;
     opacity: 50%;
 }
 
@@ -273,6 +281,8 @@ input[type="text"],input[type="password"]
 
 #btnLogout:hover
 {
+    background-color: cornflowerblue;
+    color: #FFFFFF;
     opacity: 50%;
 }
 
@@ -298,59 +308,43 @@ input[type="text"],input[type="password"]
     margin-top: 1vw;
     margin-left: 40vw;
     border: none;
-    background: transparent;
 }
 
 #btnEdit img
 {
     width: 42px;
     cursor: pointer;
+    background:transparent;
 }
 
-#btnDelete
-{
-    margin-top: 1vw;
-    margin-left: 2vw;
-    border:none;
-    background: transparent;
-}
-
-#btnDelete img
-{
-    width: 43px;
-    height:43px;
-    cursor: pointer;
-}
-
-#btnUpdate
+#btnUpdate, #btnDelete, #btnCloseInfo, #btnCancelNewContact
 {
     font-size: 25px;
-    width: 8vw;
-    margin-top: 1vw;
-    margin-left: 30vw;
-    margin-bottom: 1vw;
+    width: 10vw;
+    margin-left: 3vw;
     font-family: 'Poppins', sans-serif;
     background-color: lightgreen;
     color: white;
     border-radius: 10px;
 }
 
-#btnCancelEdit
+#btnCloseInfo
 {
-    font-size: 25px;
-    width: 8vw;
-    margin-left: 2vw;
-    font-family: 'Poppins', sans-serif;
+    margin-top: 1vw;
+    margin-left: 20vw;
+    background-color: rgba(72, 61, 139, .75);
+}
+
+#btnCancelNewContact, #btnDelete
+{
     background-color:lightcoral;
-    color: white;
-    border-radius: 10px;
 }
 
 #btnAddContact
 {
     font-size: 30px;
     width: 33vw;
-    text-align: center;
+    margin-top: 4vw;
     margin-left: 32vw;
     font-family: 'Poppins', sans-serif;
     background-color: darkslateblue;
@@ -363,7 +357,6 @@ input[type="text"],input[type="password"]
     font-size: 25px;
     width: 10vw;
     margin-left: 17vw;
-    margin-bottom: 2vw;
     font-family: 'Poppins', sans-serif;
     background-color: darkslateblue;
     color: white;
@@ -374,17 +367,6 @@ input[type="text"],input[type="password"]
 {
     opacity: 80%;
     cursor: pointer;
-}
-
-#btnCancelNewContact
-{
-    font-size: 25px;
-    width: 10vw;
-    margin-left: 3vw;
-    font-family: 'Poppins', sans-serif;
-    background-color:lightcoral;
-    color: white;
-    border-radius: 10px;
 }
 
 /*-------------------- Links --------------------*/
